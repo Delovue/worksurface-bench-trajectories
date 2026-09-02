@@ -29,20 +29,6 @@ scoring-oriented runner normally discards:
 `data/` holds one file per persona: `backend_developer` (181), `product_manager` (39),
 `researcher` (44), `logistics_manager` (595), `operations_manager` (292).
 
-The two answer fields are easy to confuse, so concretely:
-
-```python
-import json
-rec = json.loads(open("data/wsb_backend_developer.jsonl").readline())
-
-rec["answer"]            # what the model produced — free-form prose, often
-                         # a Markdown table with its reasoning and sources
-rec["reference_answer"]  # the benchmark gold, e.g. "_activity_..._sheet.xlsx; 9"
-```
-
-`answer` is unconstrained: the model was not asked for a bare value, so a correct
-response typically embeds the gold fragments inside an explanation. That is why the
-`substring_hit_rate` below is a fragment check rather than an equality test.
 
 ## Collection setup
 
