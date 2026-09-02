@@ -1,0 +1,94 @@
+{
+  "per_profile": {
+    "backend_developer": {
+      "trajectories": 181,
+      "substring_hit_rate": 0.481,
+      "task_failures": 0,
+      "mean_tool_calls": 3.58,
+      "mean_messages": 6.86,
+      "graph_required": 95,
+      "graph_used": 11,
+      "graph_bypass_rate": 0.884
+    },
+    "product_manager": {
+      "trajectories": 39,
+      "substring_hit_rate": 0.41,
+      "task_failures": 0,
+      "mean_tool_calls": 4.05,
+      "mean_messages": 7.38,
+      "graph_required": 25,
+      "graph_used": 13,
+      "graph_bypass_rate": 0.48
+    },
+    "researcher": {
+      "trajectories": 44,
+      "substring_hit_rate": 0.386,
+      "task_failures": 0,
+      "mean_tool_calls": 3.77,
+      "mean_messages": 7.14,
+      "graph_required": 42,
+      "graph_used": 23,
+      "graph_bypass_rate": 0.452
+    },
+    "logistics_manager": {
+      "trajectories": 595,
+      "substring_hit_rate": 0.565,
+      "task_failures": 0,
+      "mean_tool_calls": 4.24,
+      "mean_messages": 8.05,
+      "graph_required": 343,
+      "graph_used": 106,
+      "graph_bypass_rate": 0.691
+    },
+    "operations_manager": {
+      "trajectories": 292,
+      "substring_hit_rate": 0.699,
+      "task_failures": 0,
+      "mean_tool_calls": 3.98,
+      "mean_messages": 7.56,
+      "graph_required": 95,
+      "graph_used": 49,
+      "graph_bypass_rate": 0.484
+    }
+  },
+  "totals": {
+    "trajectories": 1151,
+    "tool_calls": 4658,
+    "tool_error_rate": 0.0333,
+    "messages": 8840,
+    "input_tokens": 9664266,
+    "output_tokens": 688446,
+    "wall_clock_hours": 10.27,
+    "task_failures": 0,
+    "substring_hit_rate": 0.573,
+    "mean_tool_calls": 4.05
+  },
+  "graph_bypass": {
+    "overall": {
+      "required": 600,
+      "used": 202,
+      "bypass_rate": 0.663
+    },
+    "by_task_type": {
+      "unlabeled": {
+        "required": 26,
+        "used": 5,
+        "bypass_rate": 0.808
+      },
+      "cross_surface": {
+        "required": 403,
+        "used": 87,
+        "bypass_rate": 0.784
+      },
+      "graph_only": {
+        "required": 171,
+        "used": 110,
+        "bypass_rate": 0.357
+      }
+    }
+  },
+  "answer_hit_by_graph_use": {
+    "used_graph": 0.322,
+    "bypassed_graph": 0.286
+  }
+}
