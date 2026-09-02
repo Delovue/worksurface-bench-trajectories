@@ -15,16 +15,34 @@ scoring-oriented runner normally discards:
 
 | field | what it holds |
 |---|---|
+| `answer` | **the model's final response** — what the agent actually answered (present and non-empty on all 1,151 records). Compare against `reference_answer` for the gold. |
+| `question` | the task prompt as given to the agent |
 | `history` | full message list — every assistant text block (the model's own reasoning between tool calls), every `tool_use`, every `tool_result` fed back |
 | `tool_trace` | per-call metadata: tool name, surface, access level, input, `is_error`, latency, result size |
 | `evidence` | retrieved items with `surface`, `source_id`, `locator`, `content`, score |
 | `raw_tool_results` | **untruncated** tool returns; `history` holds the truncated version and `tool_trace` only a char count, so this is the only complete copy |
 | `nested_model_usage` | model calls made *inside* a tool (NL2SQL), which the outer agent loop does not see |
-| `usage`, `iterations`, `stop_reason`, `latency_s`, `attempts` | run accounting |
+| `usage`, `iterations`, `stop_reason`, `latency_s` | run accounting |
+| `attempts` | retry count — **only present on the 67 re-collected records** (retry support was added after the first pass); absent means a single attempt |
 | `reference_answer`, `metadata` | the task's gold answer, `gold_tools`, `gold_evidence`, `required_surfaces`, `answer_type`, `difficulty`, `task_type` |
 
 `data/` holds one file per persona: `backend_developer` (181), `product_manager` (39),
 `researcher` (44), `logistics_manager` (595), `operations_manager` (292).
+
+The two answer fields are easy to confuse, so concretely:
+
+```python
+import json
+rec = json.loads(open("data/wsb_backend_developer.jsonl").readline())
+
+rec["answer"]            # what the model produced — free-form prose, often
+                         # a Markdown table with its reasoning and sources
+rec["reference_answer"]  # the benchmark gold, e.g. "_activity_..._sheet.xlsx; 9"
+```
+
+`answer` is unconstrained: the model was not asked for a bare value, so a correct
+response typically embeds the gold fragments inside an explanation. That is why the
+`substring_hit_rate` below is a fragment check rather than an equality test.
 
 ## Collection setup
 
