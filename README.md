@@ -128,15 +128,6 @@ Re-indexing gotcha: `storage/<profile>/ingest_state.json` is a dedupe ledger key
 *source* checksum and does not track the embedding model. After switching embeddings,
 `ingest` reports `unchanged` and writes zero vectors. Delete `ingest_state.json`,
 `kb_index_manifest.json`, and `chroma/` together to force a rebuild.
-
-## Attribution
-
-Tasks, gold answers, and workspace corpora come from **WorkSurface-Bench**
-([HuggingFace](https://huggingface.co/datasets/lhpku20010120/WorkSurface-Bench),
-[GitHub](https://github.com/haolpku/WorkSurface-Bench)), released under
-**CC-BY-4.0**; its code is Apache-2.0 (included as
-`LICENSE-Apache-2.0-WorkSurface-Bench`). It builds on
-[Workspace-Bench](https://github.com/OpenDataBox/Workspace-Bench)
 (arXiv:2605.03596); the WorkSurface-Bench report is arXiv:2607.25765.
 
 The harness is [DataMind](https://github.com/OpenDCAI/DataMind) by OpenDCAI.
